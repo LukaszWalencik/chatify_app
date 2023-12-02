@@ -14,11 +14,21 @@ class _SplashPageState extends State<SplashPage> {
     return MaterialApp(
       title: 'Chatyfy',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
-        // colorScheme: ColorScheme(
-        //   background: Color.fromRGBO(36, 35, 49, 1.0),
-        // ),
+        scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
       ),
+      home: Scaffold(
+          body: Center(
+        child: Container(
+          width: 200,
+          height: 200,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.contain,
+              image: AssetImage('assets/images/logo.png'),
+            ),
+          ),
+        ),
+      )),
     );
   }
 }
