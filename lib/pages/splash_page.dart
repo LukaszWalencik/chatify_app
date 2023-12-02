@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+  final VoidCallback onInitializationComplete;
+  const SplashPage({super.key, required this.onInitializationComplete});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -10,6 +11,14 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      title: 'Chatyfy',
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color.fromRGBO(36, 35, 49, 1.0),
+        // colorScheme: ColorScheme(
+        //   background: Color.fromRGBO(36, 35, 49, 1.0),
+        // ),
+      ),
+    );
   }
 }
