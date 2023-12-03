@@ -6,4 +6,8 @@ class NavigatorService {
   void removeAndNavigateToRoute(String route) {
     navigatorKey.currentState?.popAndPushNamed(route);
   }
+
+  void navigatorToRoute(String route) {
+    navigatorKey.currentState?.pushNamed(route);
+  }
 }
