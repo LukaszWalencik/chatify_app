@@ -20,4 +20,8 @@ class NavigatorService {
       ),
     );
   }
+
+  void goBack() {
+    navigatorKey.currentState?.pop();
+  }
 }
