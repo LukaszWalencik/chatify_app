@@ -50,6 +50,7 @@ class DefaultFirebaseOptions {
     projectId: 'chatify-18bea',
     authDomain: 'chatify-18bea.firebaseapp.com',
     storageBucket: 'chatify-18bea.appspot.com',
+    measurementId: 'G-5JLN811QNN',
   );
 
   static const FirebaseOptions android = FirebaseOptions(

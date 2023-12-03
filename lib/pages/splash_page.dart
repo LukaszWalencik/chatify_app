@@ -1,3 +1,4 @@
+import 'package:chatify_app/firebase_options.dart';
 import 'package:chatify_app/services/cloud_storage_service.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/media_service.dart';
@@ -7,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
+  const SplashPage({super.key, required this.onInitializationComplete});
+
   final VoidCallback onInitializationComplete;
-  const SplashPage({required Key key, required this.onInitializationComplete})
-      : super(key: key);
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -48,8 +49,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> setup() async {
-    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
     _registerServices();
   }
 
