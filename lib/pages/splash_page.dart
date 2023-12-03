@@ -1,3 +1,4 @@
+import 'package:chatify_app/services/cloud_storage_service.dart';
 import 'package:chatify_app/services/media_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -51,5 +52,7 @@ class _SplashPageState extends State<SplashPage> {
   void _registerServices() {
     GetIt.instance.registerSingleton<NavigationService>(NavigationService());
     GetIt.instance.registerSingleton<MediaService>(MediaService());
+    GetIt.instance
+        .registerSingleton<CloudStorageService>(CloudStorageService());
   }
 }
