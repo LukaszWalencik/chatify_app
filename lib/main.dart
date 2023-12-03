@@ -1,12 +1,13 @@
+import 'package:chatify_app/pages/login_page.dart';
 import 'package:chatify_app/pages/splash_page.dart';
+import 'package:chatify_app/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
   runApp(
     SplashPage(
-      key: UniqueKey(),
       onInitializationComplete: () {
-        runApp(const MainApp());
+        const MainApp();
       },
     ),
   );
@@ -25,7 +26,9 @@ class MainApp extends StatelessWidget {
           backgroundColor: Color.fromRGBO(30, 29, 37, 1.0),
         ),
       ),
-      // navigatorKey: NavigationService.navigatorKey,
+      navigatorKey: NavigationService.navigatorKey,
+      initialRoute: '/login',
+      routes: {'/login': (BuildContext context) => const LoginPage()},
     );
   }
 }
