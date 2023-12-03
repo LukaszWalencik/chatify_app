@@ -10,4 +10,14 @@ class NavigatorService {
   void navigatorToRoute(String route) {
     navigatorKey.currentState?.pushNamed(route);
   }
+
+  void navigatorToPage(Widget page) {
+    navigatorKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return page;
+        },
+      ),
+    );
+  }
 }
