@@ -8,7 +8,8 @@ import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
-  const SplashPage({super.key, required this.onInitializationComplete});
+  const SplashPage({required Key key, required this.onInitializationComplete})
+      : super(key: key);
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -18,7 +19,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    setup().then((_) => widget.onInitializationComplete);
+    Future.delayed(const Duration(seconds: 2)).then((_) {
+      setup().then((_) => widget.onInitializationComplete);
+    });
   }
 
   @override
