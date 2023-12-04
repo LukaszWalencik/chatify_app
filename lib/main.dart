@@ -3,7 +3,7 @@ import 'package:chatify_app/pages/splash_page.dart';
 import 'package:chatify_app/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 
-Future<void> main() async {
+main() {
   runApp(
     SplashPage(
       onInitializationComplete: () {

@@ -21,8 +21,16 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: deviceWidth * 0.02,
+          horizontal: deviceWidth * 0.03,
           vertical: deviceHeight * 0.02,
+        ),
+        height: deviceHeight * 0.98,
+        width: deviceWidth * 0.97,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [],
         ),
       ),
     );
