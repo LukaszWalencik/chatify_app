@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late double deviceHeight;
   late double deviceWidth;
+  final loginFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             pageTitle(),
+            loginForm(),
           ],
         ),
       ),
@@ -47,6 +49,21 @@ class _LoginPageState extends State<LoginPage> {
           color: Colors.white,
           fontSize: 40,
           fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget loginForm() {
+    return Container(
+      height: deviceHeight * 0.18,
+      child: Form(
+        key: loginFormKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [],
         ),
       ),
     );
