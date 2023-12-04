@@ -1,3 +1,4 @@
+import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -63,7 +64,14 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [],
+          children: [
+            CustomTextFormField(
+                onSaved: () {},
+                regEx:
+                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                hintText: 'Email',
+                obscureText: false)
+          ],
         ),
       ),
     );
