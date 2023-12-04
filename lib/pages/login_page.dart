@@ -30,7 +30,23 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [],
+          children: [
+            pageTitle(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget pageTitle() {
+    return Container(
+      height: deviceHeight * 0.10,
+      child: Text(
+        'Chatify',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
