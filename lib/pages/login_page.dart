@@ -1,3 +1,4 @@
+import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +12,14 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late double deviceHeight;
   late double deviceWidth;
+
   final loginFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
+
     return buildUi();
   }
 
@@ -34,7 +38,11 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             pageTitle(),
+            SizedBox(height: deviceHeight * 0.04),
             loginForm(),
+            SizedBox(height: deviceHeight * 0.05),
+            loginButton(),
+            SizedBox(height: deviceHeight * 0.02),
           ],
         ),
       ),
@@ -44,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget pageTitle() {
     return Container(
       height: deviceHeight * 0.10,
-      child: Text(
+      child: const Text(
         'Chatify',
         style: TextStyle(
           color: Colors.white,
@@ -75,10 +83,18 @@ class _LoginPageState extends State<LoginPage> {
                 onSaved: () {},
                 regEx: r".{8,}",
                 hintText: 'Password',
-                obscureText: true)
+                obscureText: true),
           ],
         ),
       ),
     );
+  }
+
+  Widget loginButton() {
+    return CustomButton(
+        name: 'Login',
+        height: deviceHeight * 0.065,
+        width: deviceWidth * 0.65,
+        onPressed: () {});
   }
 }
