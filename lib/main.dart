@@ -4,13 +4,13 @@ import 'package:chatify_app/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(
-    SplashPage(
-      onInitializationComplete: () {
-        const MainApp();
-      },
-    ),
-  );
+  runApp(MainApp()
+      // SplashPage(
+      //   onInitializationComplete: () {
+      //     const MainApp();
+      //   },
+      // ),
+      );
 }
 
 class MainApp extends StatelessWidget {
