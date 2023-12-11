@@ -36,4 +36,8 @@ class ChatUser {
   String lastDayActive() {
     return '${lastActive.month}/${lastActive.day}/${lastActive.year}';
   }
+
+  bool wasRecentlyActive() {
+    return DateTime.now().difference(lastActive).inHours < 2;
+  }
 }
