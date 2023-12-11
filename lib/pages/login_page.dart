@@ -70,7 +70,12 @@ class _LoginPageState extends State<LoginPage> {
                 regEx:
                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
                 hintText: 'Email',
-                obscureText: false)
+                obscureText: false),
+            CustomTextFormField(
+                onSaved: () {},
+                regEx: r".{8,}",
+                hintText: 'Password',
+                obscureText: true)
           ],
         ),
       ),
