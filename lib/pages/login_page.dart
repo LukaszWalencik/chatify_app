@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: deviceHeight * 0.05),
             loginButton(),
             SizedBox(height: deviceHeight * 0.02),
+            registerAccountLink(),
           ],
         ),
       ),
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget pageTitle() {
-    return Container(
+    return SizedBox(
       height: deviceHeight * 0.10,
       child: const Text(
         'Chatify',
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget loginForm() {
-    return Container(
+    return SizedBox(
       height: deviceHeight * 0.18,
       child: Form(
         key: loginFormKey,
@@ -96,5 +97,17 @@ class _LoginPageState extends State<LoginPage> {
         height: deviceHeight * 0.065,
         width: deviceWidth * 0.65,
         onPressed: () {});
+  }
+
+  Widget registerAccountLink() {
+    return GestureDetector(
+      onTap: () {},
+      child: const Text(
+        'Dont\'t have an account?',
+        style: TextStyle(
+          color: Colors.blueAccent,
+        ),
+      ),
+    );
   }
 }
