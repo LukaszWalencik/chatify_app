@@ -17,11 +17,21 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       onSaved: (newValue) => onSaved(newValue!),
       cursorColor: Colors.white,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       obscureText: obscureText,
       validator: (value) {
         RegExp(regEx).hasMatch(value!) ? null : 'Enter a valid value';
       },
+      decoration: InputDecoration(
+          fillColor: const Color.fromRGBO(30, 29, 37, 1.0),
+          filled: true,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide.none),
+          hintText: hintText,
+          hintStyle: const TextStyle(
+            color: Colors.white54,
+          )),
     );
   }
 }
