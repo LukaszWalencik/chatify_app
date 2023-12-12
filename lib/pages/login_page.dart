@@ -1,3 +1,5 @@
+import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/services/navigation_service.dart';
 import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,8 @@ class _LoginPageState extends State<LoginPage> {
   late double deviceWidth;
 
   final loginFormKey = GlobalKey<FormState>();
+  String? email;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
