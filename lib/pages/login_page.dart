@@ -15,6 +15,9 @@ class _LoginPageState extends State<LoginPage> {
   late double deviceHeight;
   late double deviceWidth;
 
+  late AuthenticationProvieder auth;
+  late NavigationService navigationService;
+
   final loginFormKey = GlobalKey<FormState>();
   String? email;
   String? password;
