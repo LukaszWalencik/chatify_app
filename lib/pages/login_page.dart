@@ -3,6 +3,8 @@ import 'package:chatify_app/services/navigation_service.dart';
 import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
-
+    auth = Provider.of<AuthenticationProvieder>(context);
+    navigationService = GetIt.instance.get<NavigationService>();
     return buildUi();
   }
 
