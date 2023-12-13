@@ -114,7 +114,11 @@ class _LoginPageState extends State<LoginPage> {
         name: 'Login',
         height: deviceHeight * 0.065,
         width: deviceWidth * 0.65,
-        onPressed: () {});
+        onPressed: () {
+          if (loginFormKey.currentState!.validate()) {
+            loginFormKey.currentState!.save();
+          }
+        });
   }
 
   Widget registerAccountLink() {
