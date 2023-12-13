@@ -85,13 +85,21 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomTextFormField(
-                onSaved: () {},
+                onSaved: (emailValue) {
+                  setState(() {
+                    email = emailValue;
+                  });
+                },
                 regEx:
                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
                 hintText: 'Email',
                 obscureText: false),
             CustomTextFormField(
-                onSaved: () {},
+                onSaved: (passwordValue) {
+                  setState(() {
+                    password = passwordValue;
+                  });
+                },
                 regEx: r".{8,}",
                 hintText: 'Password',
                 obscureText: true),
