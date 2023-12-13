@@ -117,6 +117,7 @@ class _LoginPageState extends State<LoginPage> {
         onPressed: () {
           if (loginFormKey.currentState!.validate()) {
             loginFormKey.currentState!.save();
+            auth.loginWithEmailAndPassword(email!, password!);
           }
         });
   }
