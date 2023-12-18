@@ -1,4 +1,5 @@
 import 'package:chatify_app/firebase_options.dart';
+import 'package:chatify_app/pages/home_page.dart';
 import 'package:chatify_app/pages/login_page.dart';
 import 'package:chatify_app/pages/splash_page.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
@@ -41,7 +42,10 @@ class MainApp extends StatelessWidget {
         ),
         navigatorKey: NavigationService.navigatorKey,
         initialRoute: '/login',
-        routes: {'/login': (BuildContext context) => const LoginPage()},
+        routes: {
+          '/login': (BuildContext context) => const LoginPage(),
+          '/home': (context) => HomePage()
+        },
       ),
     );
   }
