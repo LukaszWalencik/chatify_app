@@ -1,3 +1,4 @@
+import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +9,8 @@ class AuthenticationProvieder extends ChangeNotifier {
   late final FirebaseAuth auth;
   late final NavigationService navigationService;
   late final DatabaseService databaseService;
+  late ChatUser chatUser;
+
   AuthenticationProvieder() {
     auth = FirebaseAuth.instance;
     navigationService = GetIt.instance.get<NavigationService>();
@@ -16,7 +19,18 @@ class AuthenticationProvieder extends ChangeNotifier {
       if (user != null) {
         print('Logged in');
         databaseService.updateUserLastSeenTime(user.uid);
-        databaseService.getUser(user.uid);
+        databaseService.getUser(user.uid).then((snapshot) {
+          Map<String, dynamic> userData =
+              snapshot.data()! as Map<String, dynamic>;
+          chatUser = ChatUser.fromJSON({
+            'uid': user.uid,
+            'name': userData['name'],
+            'email': userData['email'],
+            'last_active': userData['last_active'],
+            'image': userData['image'],
+          });
+          print(chatUser.toMap());
+        });
       } else {
         print('Not authenticated');
       }
