@@ -30,6 +30,7 @@ class AuthenticationProvieder extends ChangeNotifier {
             'image': userData['image'],
           });
           print(chatUser.toMap());
+          navigationService.removeAndNavigateToRoute('/home');
         });
       } else {
         print('Not authenticated');
