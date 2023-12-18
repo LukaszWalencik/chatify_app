@@ -6,4 +6,8 @@ const String MESSAGES_COLLECTION = 'Messages';
 
 class DatabaseService {
   final FirebaseFirestore db = FirebaseFirestore.instance;
+
+  Future<DocumentSnapshot> getUser(String uid) {
+    return db.collection(USER_COLLECTION).doc(uid).get();
+  }
 }
