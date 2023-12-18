@@ -34,6 +34,7 @@ class AuthenticationProvieder extends ChangeNotifier {
         });
       } else {
         print('Not authenticated');
+        navigationService.removeAndNavigateToRoute('/login');
       }
     });
   }
