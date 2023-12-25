@@ -18,6 +18,16 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildUI() {
-    return Scaffold();
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: deviceWidth * 0.03,
+          vertical: deviceHeight * 0.02,
+        ),
+        height: deviceHeight * 0.98,
+        width: deviceWidth * 0.97,
+      ),
+    );
   }
 }
