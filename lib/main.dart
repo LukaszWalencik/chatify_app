@@ -1,6 +1,7 @@
 import 'package:chatify_app/firebase_options.dart';
 import 'package:chatify_app/pages/home_page.dart';
 import 'package:chatify_app/pages/login_page.dart';
+import 'package:chatify_app/pages/register_page.dart';
 import 'package:chatify_app/pages/splash_page.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/services/navigation_service.dart';
@@ -13,7 +14,7 @@ main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MainApp()
+  runApp(const MainApp()
       // SplashPage(
       //   onInitializationComplete: () {
       //     const MainApp();
@@ -43,8 +44,9 @@ class MainApp extends StatelessWidget {
         navigatorKey: NavigationService.navigatorKey,
         initialRoute: '/login',
         routes: {
-          '/login': (BuildContext context) => const LoginPage(),
-          '/home': (context) => HomePage()
+          '/login': (context) => const LoginPage(),
+          '/home': (context) => const HomePage(),
+          '/register': (context) => const RegisterPage(),
         },
       ),
     );
