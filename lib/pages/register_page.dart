@@ -1,4 +1,5 @@
-import 'package:chatify_app/widgets/rounded_imgae.dart';
+import 'package:chatify_app/widgets/rounded_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   late double deviceWidth;
   late double deviceHeight;
+
+  PlatformFile? profileImage;
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
@@ -39,8 +42,15 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget profileImageField() {
-    return RoundedImageNetwork(
-        imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
-        size: deviceHeight * 0.15);
+    if (profileImage != null) {
+      return RoundedImageFile(
+        image: profileImage!,
+        size: deviceHeight * 0.15,
+      );
+    } else {
+      return RoundedImageNetwork(
+          imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
+          size: deviceHeight * 0.15);
+    }
   }
 }
