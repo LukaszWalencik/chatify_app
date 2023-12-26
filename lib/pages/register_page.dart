@@ -47,6 +47,9 @@ class _RegisterPageState extends State<RegisterPage> {
             profileImageField(),
             SizedBox(height: deviceHeight * 0.05),
             registerForm(),
+            SizedBox(height: deviceHeight * 0.05),
+            registerButton(),
+            SizedBox(height: deviceHeight * 0.02),
           ],
         ),
       ),
@@ -119,5 +122,13 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  Widget registerButton() {
+    return CustomButton(
+        name: 'Register',
+        height: deviceHeight * 0.065,
+        width: deviceWidth * 0.65,
+        onPressed: () async {});
   }
 }
