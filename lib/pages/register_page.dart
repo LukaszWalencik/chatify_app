@@ -1,6 +1,8 @@
+import 'package:chatify_app/services/media_service.dart';
 import 'package:chatify_app/widgets/rounded_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -42,15 +44,26 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget profileImageField() {
-    if (profileImage != null) {
-      return RoundedImageFile(
-        image: profileImage!,
-        size: deviceHeight * 0.15,
-      );
-    } else {
-      return RoundedImageNetwork(
-          imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
-          size: deviceHeight * 0.15);
-    }
+    return GestureDetector(
+      onTap: () {
+        GetIt.instance.get<MediaService>().pickUpFromLibrary().then((file) {
+          setState(() {
+            profileImage = file;
+          });
+        });
+      },
+      child: () {
+        if (profileImage != null) {
+          return RoundedImageFile(
+            image: profileImage!,
+            size: deviceHeight * 0.15,
+          );
+        } else {
+          return RoundedImageNetwork(
+              imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
+              size: deviceHeight * 0.15);
+        }
+      }(),
+    );
   }
 }
