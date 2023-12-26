@@ -27,7 +27,17 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         height: deviceHeight * 0.98,
         width: deviceWidth * 0.97,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [profileImageField()],
+        ),
       ),
     );
+  }
+
+  Widget profileImageField() {
+    return Column();
   }
 }
