@@ -12,11 +12,14 @@ class RoundedImageNetwork extends StatelessWidget {
       height: size,
       width: size,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(imagePath),
-        ),
-      ),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(imagePath),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(size),
+          ),
+          color: Colors.black),
     );
   }
 }
