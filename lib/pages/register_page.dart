@@ -1,4 +1,5 @@
 import 'package:chatify_app/services/media_service.dart';
+import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/rounded_image.dart';
 import 'package:file_picker/file_picker.dart';
@@ -15,6 +16,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   late double deviceWidth;
   late double deviceHeight;
+  String? name;
+  String? email;
+  String? password;
 
   PlatformFile? profileImage;
   final registerFormKey = GlobalKey<FormState>();
@@ -41,6 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             profileImageField(),
+            SizedBox(height: deviceHeight * 0.05),
             registerForm(),
           ],
         ),
@@ -83,18 +88,30 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomTextFormField(
-                onSaved: (value) {},
+                onSaved: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
                 regEx: r'.{8,};',
                 hintText: 'Name',
                 obscureText: false),
             CustomTextFormField(
-                onSaved: (value) {},
+                onSaved: (value) {
+                  setState(() {
+                    email = value;
+                  });
+                },
                 regEx:
                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
                 hintText: 'Email',
                 obscureText: false),
             CustomTextFormField(
-                onSaved: (value) {},
+                onSaved: (value) {
+                  setState(() {
+                    password = value;
+                  });
+                },
                 regEx: r'.{8,};',
                 hintText: 'Password',
                 obscureText: true),
