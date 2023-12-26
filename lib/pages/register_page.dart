@@ -1,3 +1,4 @@
+import 'package:chatify_app/widgets/rounded_imgae.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -38,6 +39,8 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget profileImageField() {
-    return Column();
+    return RoundedImageNetwork(
+        imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
+        size: deviceHeight * 0.15);
   }
 }
