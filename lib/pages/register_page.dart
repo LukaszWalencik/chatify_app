@@ -93,6 +93,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
                 hintText: 'Email',
                 obscureText: false),
+            CustomTextFormField(
+                onSaved: (value) {},
+                regEx: r'.{8,};',
+                hintText: 'Password',
+                obscureText: true),
           ],
         ),
       ),
