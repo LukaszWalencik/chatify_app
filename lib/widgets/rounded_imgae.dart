@@ -8,6 +8,15 @@ class RoundedImageNetwork extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      height: size,
+      width: size,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(imagePath),
+        ),
+      ),
+    );
   }
 }
