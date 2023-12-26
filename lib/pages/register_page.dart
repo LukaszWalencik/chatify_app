@@ -1,4 +1,5 @@
 import 'package:chatify_app/services/media_service.dart';
+import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/rounded_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late double deviceHeight;
 
   PlatformFile? profileImage;
+  final registerFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
@@ -37,7 +39,10 @@ class _RegisterPageState extends State<RegisterPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [profileImageField()],
+          children: [
+            profileImageField(),
+            registerForm(),
+          ],
         ),
       ),
     );
@@ -64,6 +69,27 @@ class _RegisterPageState extends State<RegisterPage> {
               size: deviceHeight * 0.15);
         }
       }(),
+    );
+  }
+
+  Widget registerForm() {
+    return Container(
+      height: deviceHeight * 0.35,
+      child: Form(
+        key: registerFormKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomTextFormField(
+                onSaved: (value) {},
+                regEx: r'.{8,};',
+                hintText: 'Name',
+                obscureText: false),
+          ],
+        ),
+      ),
     );
   }
 }
