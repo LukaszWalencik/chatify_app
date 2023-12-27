@@ -1,3 +1,6 @@
+import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/services/cloud_storage_service.dart';
+import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/media_service.dart';
 import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
@@ -5,6 +8,7 @@ import 'package:chatify_app/widgets/rounded_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -19,11 +23,17 @@ class _RegisterPageState extends State<RegisterPage> {
   String? name;
   String? email;
   String? password;
+  late AuthenticationProvieder authenticationProvieder;
+  late DatabaseService databaseService;
+  late CloudStorageService cloudStorageService;
 
   PlatformFile? profileImage;
   final registerFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    authenticationProvieder = Provider.of<AuthenticationProvieder>(context);
+    databaseService = GetIt.instance.get<DatabaseService>();
+    cloudStorageService = GetIt.instance.get<CloudStorageService>();
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     return buildUI();
