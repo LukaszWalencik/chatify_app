@@ -60,4 +60,12 @@ class AuthenticationProvieder extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future<void> logout() async {
+    try {
+      await auth.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 }
