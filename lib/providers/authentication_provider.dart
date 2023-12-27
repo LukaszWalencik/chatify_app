@@ -47,4 +47,17 @@ class AuthenticationProvieder extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future<String?> registerUserEmailAndPassword(
+      String email, String password) async {
+    try {
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return userCredential.user!.uid;
+    } on FirebaseAuthException {
+      print('Error registering user.');
+    } catch (e) {
+      print(e);
+    }
+  }
 }
