@@ -139,6 +139,20 @@ class _RegisterPageState extends State<RegisterPage> {
         name: 'Register',
         height: deviceHeight * 0.065,
         width: deviceWidth * 0.65,
-        onPressed: () async {});
+        onPressed: () async {
+          if (registerFormKey.currentState!.validate() &&
+              profileImage != null) {
+            registerFormKey.currentState!.save();
+            String? uid = await authenticationProvieder
+                .registerUserEmailAndPassword(email!, password!);
+            String? imageURL = await cloudStorageService.saveUserImageToStorage(
+                uid!, profileImage!);
+            await databaseService.createUser(uid, email!, name!, imageURL!);
+            await authenticationProvieder.logout();
+            await authenticationProvieder.loginWithEmailAndPassword(
+                email!, password!);
+          }
+          ;
+        });
   }
 }
