@@ -10,6 +10,10 @@ class ChatsPage extends StatefulWidget {
 class _ChatsPageState extends State<ChatsPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return buildUI();
+  }
+
+  Widget buildUI() {
+    return Scaffold(backgroundColor: Colors.red);
   }
 }
