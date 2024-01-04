@@ -1,4 +1,5 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,19 @@ class _ChatsPageState extends State<ChatsPage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [],
+        children: [
+          TopBar(
+            barTitle: 'Chats',
+            primaryAction: IconButton(
+                onPressed: () {
+                  auth.logout();
+                },
+                icon: Icon(
+                  Icons.logout,
+                  color: Color.fromRGBO(0, 82, 218, 1),
+                )),
+          )
+        ],
       ),
     );
   }
