@@ -23,6 +23,17 @@ class _ChatsPageState extends State<ChatsPage> {
   }
 
   Widget buildUI() {
-    return Scaffold(backgroundColor: Colors.red);
+    return Container(
+      padding: EdgeInsets.symmetric(
+          horizontal: deviceWidth * 0.03, vertical: deviceHeight * 0.02),
+      height: deviceHeight * 0.98,
+      width: deviceWidth * 0.97,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [],
+      ),
+    );
   }
 }

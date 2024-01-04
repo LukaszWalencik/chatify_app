@@ -46,7 +46,10 @@ class TopBar extends StatelessWidget {
       barTitle,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-          color: Colors.white, fontSize: fontSize, fontWeight: FontWeight.w700),
+        color: Colors.white,
+        fontSize: fontSize,
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
