@@ -25,6 +25,28 @@ class TopBar extends StatelessWidget {
   }
 
   Widget buildUI() {
-    return Container();
+    return Container(
+      height: deviceHeight * 0.10,
+      width: deviceWidth,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (secondaryAction != null) secondaryAction!,
+          titleBar(),
+          if (primaryAction != null) primaryAction!
+        ],
+      ),
+    );
+  }
+
+  Widget titleBar() {
+    return Text(
+      barTitle,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+          color: Colors.white, fontSize: fontSize, fontWeight: FontWeight.w700),
+    );
   }
 }
