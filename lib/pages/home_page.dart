@@ -1,4 +1,5 @@
 import 'package:chatify_app/pages/chats_page.dart';
+import 'package:chatify_app/pages/user_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,9 +13,7 @@ class _HomePageState extends State<HomePage> {
   int currentPage = 0;
   List<Widget> pages = [
     ChatsPage(),
-    Container(
-      color: Colors.green,
-    )
+    UserPage(),
   ];
   @override
   Widget build(BuildContext context) {
