@@ -23,6 +23,15 @@ class CustomListViewTileWithActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListTile(
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
   }
 }
