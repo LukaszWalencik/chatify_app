@@ -30,4 +30,10 @@ class Chat {
         ? recepiens.first.name
         : recepiens.map((user) => user.name).join(', ');
   }
+
+  String imageURL() {
+    return !group
+        ? recepiens.first.imageURL
+        : 'https://www.flaticon.com/free-icon/team_7261483?term=group+chat&page=1&position=6&origin=tag&related_id=7261483';
+  }
 }
