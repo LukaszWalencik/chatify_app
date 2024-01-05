@@ -24,4 +24,10 @@ class Chat {
   List<ChatUser> users() {
     return recepiens;
   }
+
+  String title() {
+    return !group
+        ? recepiens.first.name
+        : recepiens.map((user) => user.name).join(', ');
+  }
 }
