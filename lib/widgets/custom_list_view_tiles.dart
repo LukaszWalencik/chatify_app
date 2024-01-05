@@ -24,6 +24,8 @@ class CustomListViewTileWithActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () => onTap,
+      minVerticalPadding: height * 0.20,
       title: Text(
         title,
         style: TextStyle(
