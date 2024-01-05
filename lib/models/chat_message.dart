@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum MessageType {
   TEXT,
@@ -35,5 +36,25 @@ class ChatMessage {
         type: messageType,
         content: json['content'],
         sentTime: json['date_time'].toDate());
+  }
+
+  Map<String, dynamic> toJson() {
+    String messageType;
+    switch (type) {
+      case MessageType.TEXT:
+        messageType = 'text';
+        break;
+      case MessageType.IMAGE:
+        messageType = 'image';
+        break;
+      default:
+        messageType = '';
+    }
+    return {
+      'content': content,
+      'type': messageType,
+      'sender_id': senderID,
+      'sent_time': Timestamp.fromDate(sentTime),
+    };
   }
 }
