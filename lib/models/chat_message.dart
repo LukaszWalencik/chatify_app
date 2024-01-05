@@ -17,4 +17,23 @@ class ChatMessage {
     required this.content,
     required this.sentTime,
   });
+
+  factory ChatMessage.fromJSON(Map<String, dynamic> json) {
+    MessageType messageType;
+    switch (json['type']) {
+      case 'text':
+        messageType = MessageType.TEXT;
+        break;
+      case 'image':
+        messageType = MessageType.IMAGE;
+        break;
+      default:
+        messageType = MessageType.UNKNOWN;
+    }
+    return ChatMessage(
+        senderID: json['sender_id'],
+        type: messageType,
+        content: json['content'],
+        sentTime: json['date_time'].toDate());
+  }
 }
