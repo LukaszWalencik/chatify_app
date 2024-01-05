@@ -21,4 +21,7 @@ class Chat {
     recepiens =
         members.where((member) => member.uid != currentUserUid).toList();
   }
+  List<ChatUser> users() {
+    return recepiens;
+  }
 }
