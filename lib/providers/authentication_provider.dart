@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
