@@ -32,7 +32,7 @@ class CustomListViewTileWithActivity extends StatelessWidget {
             isActive: isActive, imagePath: image, size: height / 2),
         title: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w500,
@@ -52,7 +52,7 @@ class CustomListViewTileWithActivity extends StatelessWidget {
               )
             : Text(
                 subtitle,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white54,
                   fontSize: 12,
                   fontWeight: FontWeight.w400,

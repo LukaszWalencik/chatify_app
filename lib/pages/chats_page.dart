@@ -41,7 +41,7 @@ class _ChatsPageState extends State<ChatsPage> {
                 onPressed: () {
                   auth.logout();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.logout,
                   color: Color.fromRGBO(0, 82, 218, 1),
                 )),

@@ -19,12 +19,12 @@ class CustomButton extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(height * 0.25),
-        color: Color.fromRGBO(0, 82, 218, 1.0),
+        color: const Color.fromRGBO(0, 82, 218, 1.0),
       ),
       child: TextButton(
         child: Text(
           name,
-          style: TextStyle(fontSize: 22, color: Colors.white),
+          style: const TextStyle(fontSize: 22, color: Colors.white),
         ),
         onPressed: () => onPressed,
       ),
