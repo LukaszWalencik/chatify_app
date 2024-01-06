@@ -2,6 +2,7 @@
 
 import 'package:chatify_app/widgets/rounded_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CustomListViewTileWithActivity extends StatelessWidget {
   final double height;
@@ -42,7 +43,12 @@ class CustomListViewTileWithActivity extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [],
+                children: [
+                  SpinKitThreeBounce(
+                    color: Colors.white54,
+                    size: height * 0.10,
+                  )
+                ],
               )
             : Text(
                 subtitle,
