@@ -78,12 +78,14 @@ class _RegisterPageState extends State<RegisterPage> {
       child: () {
         if (profileImage != null) {
           return RoundedImageFile(
+            key: UniqueKey(),
             image: profileImage!,
             size: deviceHeight * 0.15,
           );
         } else {
           return RoundedImageNetwork(
-              imagePath: 'https://images.app.goo.gl/43sJURPvCuaYTwnX8',
+              key: UniqueKey(),
+              imagePath: "https://i.pravatar.cc/150?img=52",
               size: deviceHeight * 0.15);
         }
       }(),
@@ -106,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     name = value;
                   });
                 },
-                regEx: r'.{8,};',
+                regEx: r'.{8,}',
                 hintText: 'Name',
                 obscureText: false),
             CustomTextFormField(
@@ -125,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     password = value;
                   });
                 },
-                regEx: r'.{8,};',
+                regEx: r".{8,}",
                 hintText: 'Password',
                 obscureText: true),
           ],
@@ -136,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget registerButton() {
     return CustomButton(
-      name: 'Register',
+      name: "Register",
       height: deviceHeight * 0.065,
       width: deviceWidth * 0.65,
       onPressed: () async {
