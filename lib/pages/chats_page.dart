@@ -46,17 +46,21 @@ class _ChatsPageState extends State<ChatsPage> {
                   color: Color.fromRGBO(0, 82, 218, 1),
                 )),
           ),
-          CustomListViewTileWithActivity(
-              height: deviceHeight * 0.10,
-              title: 'Wasia',
-              subtitle: 'Hello',
-              image:
-                  'https://www.flaticon.com/free-icon/chat_684849?term=chat&page=1&position=10&origin=tag&related_id=684849',
-              isActive: false,
-              isActivity: false,
-              onTap: () {})
+          chatTile(),
         ],
       ),
     );
+  }
+
+  Widget chatTile() {
+    return CustomListViewTileWithActivity(
+        height: deviceHeight * 0.10,
+        title: 'Wasia',
+        subtitle: 'Hello',
+        image:
+            'https://www.flaticon.com/free-icon/chat_684849?term=chat&page=1&position=10&origin=tag&related_id=684849',
+        isActive: false,
+        isActivity: false,
+        onTap: () {});
   }
 }
