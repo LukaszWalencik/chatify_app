@@ -46,10 +46,14 @@ class _ChatsPageState extends State<ChatsPage> {
                   color: Color.fromRGBO(0, 82, 218, 1),
                 )),
           ),
-          chatTile(),
+          chatList(),
         ],
       ),
     );
+  }
+
+  Widget chatList() {
+    return Expanded(child: chatTile());
   }
 
   Widget chatTile() {
