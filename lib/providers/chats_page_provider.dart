@@ -8,15 +8,16 @@ import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:get_it/get_it.dart';
 
-class ChatPageProvider extends ChangeNotifier {
+class ChatsPageProvider extends ChangeNotifier {
   AuthenticationProvieder auth;
   late DatabaseService databaseService;
   List<Chat>? chats;
   late StreamSubscription chatStream;
-  ChatPageProvider(
+  ChatsPageProvider(
     this.auth,
   ) {
     databaseService = GetIt.instance.get<DatabaseService>();
+    getChats();
   }
 
   @override
@@ -25,4 +26,6 @@ class ChatPageProvider extends ChangeNotifier {
 
     super.dispose();
   }
+
+  void getChats() async {}
 }
