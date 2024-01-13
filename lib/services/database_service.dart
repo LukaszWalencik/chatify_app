@@ -36,4 +36,11 @@ class DatabaseService {
       print(e);
     }
   }
+
+  Stream<QuerySnapshot> getChatsForUser(String uid) {
+    return db
+        .collection(CHAT_COLLECTION)
+        .where('members', arrayContains: uid)
+        .snapshots();
+  }
 }
