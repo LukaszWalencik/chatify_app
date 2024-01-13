@@ -38,6 +38,15 @@ class ChatsPageProvider extends ChangeNotifier {
               (doc) async {
                 Map<String, dynamic> chatData =
                     doc.data() as Map<String, dynamic>;
+                //Get User in Chat
+                List<ChatUser> members = [];
+                for (var uid in chatData['members']) {
+                  DocumentSnapshot userSnapshot =
+                      await databaseService.getUser(uid);
+                  Map<String, dynamic> userData =
+                      userSnapshot.data() as Map<String, dynamic>;
+                  members.add(ChatUser.fromJSON(userData));
+                }
 
                 //Return Chat Instance
                 return Chat(
