@@ -1,4 +1,5 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/providers/chats_page_provider.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,20 @@ class _ChatsPageState extends State<ChatsPage> {
   late double deviceHeight;
   late double deviceWidth;
   late AuthenticationProvieder auth;
+  late ChatsPageProvider chatPageProvider;
 
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     auth = Provider.of<AuthenticationProvieder>(context);
-    return buildUI();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ChatsPageProvider>(
+            create: (_) => ChatsPageProvider(auth))
+      ],
+      child: buildUI(),
+    );
   }
 
   Widget buildUI() {
