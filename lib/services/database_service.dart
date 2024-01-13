@@ -43,4 +43,14 @@ class DatabaseService {
         .where('members', arrayContains: uid)
         .snapshots();
   }
+
+  Future<QuerySnapshot> getLastMessageForChat(String chatID) {
+    return db
+        .collection(MESSAGES_COLLECTION)
+        .doc(chatID)
+        .collection(MESSAGES_COLLECTION)
+        .orderBy('sent_time', descending: true)
+        .limit(1)
+        .get();
+  }
 }
