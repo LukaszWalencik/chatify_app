@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:chatify_app/models/chat_user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chatify_app/models/chat.dart';
@@ -27,5 +29,31 @@ class ChatsPageProvider extends ChangeNotifier {
     super.dispose();
   }
 
-  void getChats() async {}
+  void getChats() async {
+    try {
+      chatStream = databaseService.getChatsForUser(auth.chatUser.uid).listen(
+        (snapshot) async {
+          chats = await Future.wait(
+            snapshot.docs.map(
+              (doc) async {
+                Map<String, dynamic> chatData =
+                    doc.data() as Map<String, dynamic>;
+
+                //Return Chat Instance
+                return Chat(
+                    uid: doc.id,
+                    currentUserUid: auth.chatUser.uid,
+                    activity: chatData['is_activity'],
+                    group: chatData['is_group'],
+                    members: [],
+                    messages: []);
+              },
+            ),
+          );
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
 }
