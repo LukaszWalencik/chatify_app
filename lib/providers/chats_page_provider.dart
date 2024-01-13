@@ -54,7 +54,7 @@ class ChatsPageProvider extends ChangeNotifier {
                     currentUserUid: auth.chatUser.uid,
                     activity: chatData['is_activity'],
                     group: chatData['is_group'],
-                    members: [],
+                    members: members,
                     messages: []);
               },
             ),
