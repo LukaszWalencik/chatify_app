@@ -66,10 +66,11 @@ class ChatsPageProvider extends ChangeNotifier {
                     activity: chatData['is_activity'],
                     group: chatData['is_group'],
                     members: members,
-                    messages: []);
+                    messages: messages);
               },
-            ),
+            ).toList(),
           );
+          notifyListeners();
         },
       );
     } catch (e) {
