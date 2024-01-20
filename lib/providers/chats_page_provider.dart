@@ -46,6 +46,7 @@ class ChatsPageProvider extends ChangeNotifier {
                       await databaseService.getUser(uid);
                   Map<String, dynamic> userData =
                       userSnapshot.data() as Map<String, dynamic>;
+                  userData['uid'] = userSnapshot.id;
                   members.add(ChatUser.fromJSON(userData));
                 }
                 //Get Last Message For Chat
