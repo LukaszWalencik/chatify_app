@@ -32,6 +32,7 @@ class DatabaseService {
         'last_active': DateTime.now().toUtc(),
         'name': name
       });
+      print('Success registration');
     } catch (e) {
       print(e);
     }

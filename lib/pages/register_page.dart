@@ -2,6 +2,7 @@ import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/services/cloud_storage_service.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/media_service.dart';
+import 'package:chatify_app/services/navigation_service.dart';
 import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/rounded_image.dart';
@@ -23,17 +24,20 @@ class _RegisterPageState extends State<RegisterPage> {
   String? name;
   String? email;
   String? password;
+  PlatformFile? profileImage;
+
   late AuthenticationProvieder authenticationProvieder;
   late DatabaseService databaseService;
   late CloudStorageService cloudStorageService;
+  late NavigationService navigationService;
 
-  PlatformFile? profileImage;
   final registerFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     authenticationProvieder = Provider.of<AuthenticationProvieder>(context);
     databaseService = GetIt.instance.get<DatabaseService>();
     cloudStorageService = GetIt.instance.get<CloudStorageService>();
+    navigationService = GetIt.instance.get<NavigationService>();
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     return buildUI();
@@ -142,6 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
       height: deviceHeight * 0.065,
       width: deviceWidth * 0.65,
       onPressed: () async {
+        print('click');
         if (registerFormKey.currentState!.validate() && profileImage != null) {
           registerFormKey.currentState!.save();
           String? uid = await authenticationProvieder
@@ -152,6 +157,8 @@ class _RegisterPageState extends State<RegisterPage> {
           await authenticationProvieder.logout();
           await authenticationProvieder.loginWithEmailAndPassword(
               email!, password!);
+          print(uid);
+          print(imageURL.isNotEmpty);
         }
       },
     );
