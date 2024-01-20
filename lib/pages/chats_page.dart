@@ -71,7 +71,7 @@ class _ChatsPageState extends State<ChatsPage> {
     return Expanded(
       child: (() {
         if (chats != null) {
-          if (chats.length != 0) {
+          if (chats.isNotEmpty) {
             return ListView.builder(
               itemCount: chats.length,
               itemBuilder: (context, index) {
@@ -79,7 +79,7 @@ class _ChatsPageState extends State<ChatsPage> {
               },
             );
           } else {
-            return Center(
+            return const Center(
               child: Text(
                 'No Chats Found!',
                 style: TextStyle(color: Colors.white),
@@ -87,7 +87,7 @@ class _ChatsPageState extends State<ChatsPage> {
             );
           }
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: Colors.white,
             ),
@@ -108,12 +108,11 @@ class _ChatsPageState extends State<ChatsPage> {
     }
     return CustomListViewTileWithActivity(
         height: deviceHeight * 0.10,
-        title: 'Wasia',
-        subtitle: 'Hello',
-        image:
-            'https://www.flaticon.com/free-icon/chat_684849?term=chat&page=1&position=10&origin=tag&related_id=684849',
-        isActive: false,
-        isActivity: false,
+        title: chat.title(),
+        subtitle: subtitleText,
+        image: chat.imageURL(),
+        isActive: isActive,
+        isActivity: chat.activity,
         onTap: () {});
   }
 }
