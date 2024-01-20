@@ -1,4 +1,6 @@
 import 'package:chatify_app/models/chat.dart';
+import 'package:chatify_app/models/chat_message.dart';
+import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/providers/chats_page_provider.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
@@ -73,7 +75,7 @@ class _ChatsPageState extends State<ChatsPage> {
             return ListView.builder(
               itemCount: chats.length,
               itemBuilder: (context, index) {
-                return chatTile();
+                return chatTile(chats[index]);
               },
             );
           } else {
@@ -95,7 +97,15 @@ class _ChatsPageState extends State<ChatsPage> {
     );
   }
 
-  Widget chatTile() {
+  Widget chatTile(Chat chat) {
+    List<ChatUser> recepiens = chat.users();
+    bool isActive = recepiens.any((element) => element.wasRecentlyActive());
+    String subtitleText = '';
+    if (chat.messages.isNotEmpty) {
+      subtitleText = chat.messages.first.type != MessageType.TEXT
+          ? 'Media Attachment'
+          : chat.messages.first.content;
+    }
     return CustomListViewTileWithActivity(
         height: deviceHeight * 0.10,
         title: 'Wasia',
