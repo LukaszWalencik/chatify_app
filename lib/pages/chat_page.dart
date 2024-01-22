@@ -41,9 +41,15 @@ class _ChatPageState extends State<ChatPage> {
             children: [
               TopBar(
                 barTitle: this.widget.chat.title(),
+                fontSize: 20,
                 primaryAction: IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.delete),
+                  color: Color.fromRGBO(0, 82, 218, 1.0),
+                ),
+                secondaryAction: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.arrow_back),
                   color: Color.fromRGBO(0, 82, 218, 1.0),
                 ),
               ),
