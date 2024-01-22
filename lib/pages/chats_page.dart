@@ -1,6 +1,7 @@
 import 'package:chatify_app/models/chat.dart';
 import 'package:chatify_app/models/chat_message.dart';
 import 'package:chatify_app/models/chat_user.dart';
+import 'package:chatify_app/pages/chat_page.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/providers/chats_page_provider.dart';
 import 'package:chatify_app/services/navigation_service.dart';
@@ -116,6 +117,10 @@ class _ChatsPageState extends State<ChatsPage> {
         image: chat.imageURL(),
         isActive: isActive,
         isActivity: chat.activity,
-        onTap: () {});
+        onTap: () {
+          navigationService.navigatorToPage(ChatPage(
+            chat: chat,
+          ));
+        });
   }
 }
