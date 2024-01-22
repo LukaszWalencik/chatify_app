@@ -16,6 +16,10 @@ class _ChatPageState extends State<ChatPage> {
   late ScrollController messageListViewController;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return buildUI();
+  }
+
+  Widget buildUI() {
+    return Scaffold();
   }
 }
