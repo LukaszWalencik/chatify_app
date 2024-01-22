@@ -3,9 +3,11 @@ import 'package:chatify_app/models/chat_message.dart';
 import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/providers/chats_page_provider.dart';
+import 'package:chatify_app/services/navigation_service.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -20,12 +22,13 @@ class _ChatsPageState extends State<ChatsPage> {
   late double deviceWidth;
   late AuthenticationProvieder auth;
   late ChatsPageProvider chatPageProvider;
-
+  late NavigationService navigationService;
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     auth = Provider.of<AuthenticationProvieder>(context);
+    navigationService = GetIt.instance.get<NavigationService>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChatsPageProvider>(
