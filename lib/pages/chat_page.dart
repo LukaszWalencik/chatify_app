@@ -1,8 +1,10 @@
+import 'package:chatify_app/models/chat.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+  final Chat chat;
+  const ChatPage({super.key, required this.chat});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
