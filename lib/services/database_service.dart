@@ -63,4 +63,12 @@ class DatabaseService {
         .orderBy('sent_time', descending: false)
         .snapshots();
   }
+
+  Future<void> deleteChat(String chatID) async {
+    try {
+      await db.collection(CHAT_COLLECTION).doc(chatID).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
 }
