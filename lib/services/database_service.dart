@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:chatify_app/models/chat_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 const String USER_COLLECTION = 'Users';
@@ -62,6 +63,18 @@ class DatabaseService {
         .collection(MESSAGES_COLLECTION)
         .orderBy('sent_time', descending: false)
         .snapshots();
+  }
+
+  Future<void> addMessageForChat(String chatID, ChatMessage chatMessage) async {
+    try {
+      await db
+          .collection(CHAT_COLLECTION)
+          .doc(chatID)
+          .collection(MESSAGES_COLLECTION)
+          .add(chatMessage.toJson());
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> deleteChat(String chatID) async {
