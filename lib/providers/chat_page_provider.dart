@@ -38,4 +38,8 @@ class ChatPageProvider extends ChangeNotifier {
   void dispose() {
     super.dispose();
   }
+
+  void goBack() {
+    navigationService.goBack();
+  }
 }
