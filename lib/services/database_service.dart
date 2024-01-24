@@ -54,4 +54,13 @@ class DatabaseService {
         .limit(1)
         .get();
   }
+
+  Stream<QuerySnapshot> streamMessagesForChat(String chatID) {
+    return db
+        .collection(CHAT_COLLECTION)
+        .doc(chatID)
+        .collection(MESSAGES_COLLECTION)
+        .orderBy('sent_time', descending: false)
+        .snapshots();
+  }
 }
