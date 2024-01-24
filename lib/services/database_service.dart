@@ -77,6 +77,14 @@ class DatabaseService {
     }
   }
 
+  Future<void> updaateChatData(String chatID, Map<String, dynamic> data) async {
+    try {
+      await db.collection(CHAT_COLLECTION).doc(chatID).update(data);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<void> deleteChat(String chatID) async {
     try {
       await db.collection(CHAT_COLLECTION).doc(chatID).delete();
