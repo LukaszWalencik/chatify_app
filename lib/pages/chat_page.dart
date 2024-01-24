@@ -20,6 +20,14 @@ class _ChatPageState extends State<ChatPage> {
   late ChatPageProvider chatPageProvider;
   late GlobalKey<FormState> messageFormState;
   late ScrollController messagesListViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    messageFormState = GlobalKey<FormState>();
+    messagesListViewController = ScrollController();
+  }
+
   @override
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
