@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chatify_app/models/chat_message.dart';
@@ -73,6 +74,26 @@ class ChatPageProvider extends ChangeNotifier {
         sentTime: DateTime.now(),
       );
       databaseService.addMessageForChat(chatID, messageToSend);
+    }
+  }
+
+  void sendImageMessage() async {
+    try {
+      PlatformFile? file = await mediaService.pickUpFromLibrary();
+      if (file != null) {
+        String? downloadURL = await cloudStorageService.saveChatImageToStorage(
+            chatID, auth.chatUser.uid, file);
+        ChatMessage messageToSent = ChatMessage(
+          senderID: auth.chatUser.uid,
+          type: MessageType.IMAGE,
+          content: downloadURL!,
+          sentTime: DateTime.now(),
+        );
+        databaseService.addMessageForChat(chatID, messageToSent);
+      }
+    } catch (e) {
+      print('Error sending image message.');
+      print(e);
     }
   }
 
