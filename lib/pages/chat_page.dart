@@ -45,41 +45,79 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget buildUI() {
-    return Builder(builder: (context) {
-      chatPageProvider = context.watch<ChatPageProvider>();
-      return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth * 0.03,
-              vertical: deviceHeight * 0.02,
-            ),
-            height: deviceHeight * 0.98,
-            width: deviceWidth * 0.97,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TopBar(
-                  barTitle: this.widget.chat.title(),
-                  fontSize: 20,
-                  primaryAction: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.delete),
-                    color: Color.fromRGBO(0, 82, 218, 1.0),
+    return Builder(
+      builder: (context) {
+        chatPageProvider = context.watch<ChatPageProvider>();
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: deviceWidth * 0.03,
+                vertical: deviceHeight * 0.02,
+              ),
+              height: deviceHeight * 0.98,
+              width: deviceWidth * 0.97,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TopBar(
+                    barTitle: this.widget.chat.title(),
+                    fontSize: 20,
+                    primaryAction: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.delete),
+                      color: const Color.fromRGBO(0, 82, 218, 1.0),
+                    ),
+                    secondaryAction: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.arrow_back),
+                      color: const Color.fromRGBO(0, 82, 218, 1.0),
+                    ),
                   ),
-                  secondaryAction: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_back),
-                    color: Color.fromRGBO(0, 82, 218, 1.0),
-                  ),
-                ),
-              ],
+                  messagesListView()
+                ],
+              ),
             ),
           ),
+        );
+      },
+    );
+  }
+
+  Widget messagesListView() {
+    if (chatPageProvider.messages != null) {
+      if (chatPageProvider.messages!.isNotEmpty) {
+        return Container(
+          height: deviceHeight * 0.74,
+          child: ListView.builder(
+            itemCount: chatPageProvider.messages!.length,
+            itemBuilder: (context, index) {
+              return Container(
+                child: Text(
+                  chatPageProvider.messages![index].content,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              );
+            },
+          ),
+        );
+      } else {
+        return const Align(
+          alignment: Alignment.center,
+          child: Text(
+            'Be the first one to say Hi!',
+            style: TextStyle(color: Colors.white),
+          ),
+        );
+      }
+    } else {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: Colors.white,
         ),
       );
-    });
+    }
   }
 }
