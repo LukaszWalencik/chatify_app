@@ -64,6 +64,18 @@ class ChatPageProvider extends ChangeNotifier {
     }
   }
 
+  void sendTextMessage() {
+    if (message != null) {
+      ChatMessage messageToSend = ChatMessage(
+        senderID: auth.chatUser.uid,
+        type: MessageType.TEXT,
+        content: message!,
+        sentTime: DateTime.now(),
+      );
+      databaseService.addMessageForChat(chatID, messageToSend);
+    }
+  }
+
   void deleteChat() {
     goBack();
     databaseService.deleteChat(chatID);
