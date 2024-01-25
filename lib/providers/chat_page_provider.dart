@@ -64,6 +64,11 @@ class ChatPageProvider extends ChangeNotifier {
     }
   }
 
+  void deleteChat() {
+    goBack();
+    databaseService.deleteChat(chatID);
+  }
+
   void goBack() {
     navigationService.goBack();
   }
