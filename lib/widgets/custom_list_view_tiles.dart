@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:chatify_app/widgets/message_bubbles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -98,7 +99,11 @@ class CustomChatListViewTile extends StatelessWidget {
             width: width * 0.05,
           ),
           chatMessage.type == MessageType.TEXT
-              ? Text(chatMessage.content)
+              ? TextMessageBubble(
+                  isOwnMessage: isOwnMessage,
+                  message: chatMessage,
+                  width: width,
+                  height: height * 0.06)
               : Text(chatMessage.content)
         ],
       ),
