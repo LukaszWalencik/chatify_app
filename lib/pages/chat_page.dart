@@ -78,7 +78,8 @@ class _ChatPageState extends State<ChatPage> {
                       color: const Color.fromRGBO(0, 82, 218, 1.0),
                     ),
                   ),
-                  messagesListView()
+                  messagesListView(),
+                  sendMessageForm(),
                 ],
               ),
             ),
@@ -129,5 +130,26 @@ class _ChatPageState extends State<ChatPage> {
         ),
       );
     }
+  }
+
+  Widget sendMessageForm() {
+    return Container(
+      height: deviceHeight * 0.06,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(30, 29, 37, 1),
+        borderRadius: BorderRadius.circular(100),
+      ),
+      margin: EdgeInsets.symmetric(
+          horizontal: deviceWidth * 0.04, vertical: deviceHeight * 0.03),
+      child: Form(
+        key: messageFormState,
+        child: const Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [],
+        ),
+      ),
+    );
   }
 }
