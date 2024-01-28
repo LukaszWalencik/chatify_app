@@ -148,7 +148,7 @@ class _ChatPageState extends State<ChatPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [messageTextField()],
+          children: [messageTextField(), sendMessageButton()],
         ),
       ),
     );
@@ -164,6 +164,21 @@ class _ChatPageState extends State<ChatPage> {
           regEx: r"^(?!\s*$).+",
           hintText: 'Type a message',
           obscureText: false),
+    );
+  }
+
+  Widget sendMessageButton() {
+    double size = deviceHeight * 0.04;
+    return Container(
+      height: size,
+      width: size,
+      child: IconButton(
+        onPressed: () {},
+        icon: Icon(
+          Icons.send,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
