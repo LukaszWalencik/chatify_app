@@ -148,7 +148,11 @@ class _ChatPageState extends State<ChatPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [messageTextField(), sendMessageButton()],
+          children: [
+            messageTextField(),
+            sendMessageButton(),
+            imageMessageButton(),
+          ],
         ),
       ),
     );
@@ -178,6 +182,19 @@ class _ChatPageState extends State<ChatPage> {
           Icons.send,
           color: Colors.white,
         ),
+      ),
+    );
+  }
+
+  Widget imageMessageButton() {
+    double size = deviceHeight * 0.04;
+    return Container(
+      height: size,
+      width: size,
+      child: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.camera_enhance),
+        backgroundColor: Color.fromRGBO(0, 28, 218, 1),
       ),
     );
   }
