@@ -2,6 +2,7 @@ import 'package:chatify_app/models/chat.dart';
 import 'package:chatify_app/models/chat_message.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/providers/chat_page_provider.dart';
+import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
@@ -143,13 +144,26 @@ class _ChatPageState extends State<ChatPage> {
           horizontal: deviceWidth * 0.04, vertical: deviceHeight * 0.03),
       child: Form(
         key: messageFormState,
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [],
+          children: [messageTextField()],
         ),
       ),
+    );
+  }
+
+  Widget messageTextField() {
+    return SizedBox(
+      width: deviceWidth * 0.65,
+      child: CustomTextFormField(
+          onSaved: (value) {
+            chatPageProvider.message = value;
+          },
+          regEx: r"^(?!\s*$).+",
+          hintText: 'Type a message',
+          obscureText: false),
     );
   }
 }
