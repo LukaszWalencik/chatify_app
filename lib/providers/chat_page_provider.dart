@@ -39,6 +39,10 @@ class ChatPageProvider extends ChangeNotifier {
     return mess;
   }
 
+  set mess(String value) {
+    message = value;
+  }
+
   @override
   void dispose() {
     super.dispose();
