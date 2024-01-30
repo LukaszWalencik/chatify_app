@@ -198,7 +198,9 @@ class _ChatPageState extends State<ChatPage> {
       height: size,
       width: size,
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          chatPageProvider.sendImageMessage();
+        },
         child: Icon(Icons.camera_enhance),
         backgroundColor: Color.fromRGBO(0, 28, 218, 1),
       ),
