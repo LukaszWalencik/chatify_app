@@ -62,6 +62,14 @@ class ChatPageProvider extends ChangeNotifier {
           ).toList();
           messages = mess;
           notifyListeners();
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              if (messagesListViewController.hasClients) {
+                messagesListViewController.jumpTo(
+                    messagesListViewController.position.maxScrollExtent);
+              }
+            },
+          );
         },
       );
       print('Error getting messages.');
