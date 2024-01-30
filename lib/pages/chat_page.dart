@@ -66,10 +66,12 @@ class _ChatPageState extends State<ChatPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TopBar(
-                    barTitle: this.widget.chat.title(),
+                    barTitle: widget.chat.title(),
                     fontSize: 20,
                     primaryAction: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        chatPageProvider.deleteChat();
+                      },
                       icon: const Icon(Icons.delete),
                       color: const Color.fromRGBO(0, 82, 218, 1.0),
                     ),
