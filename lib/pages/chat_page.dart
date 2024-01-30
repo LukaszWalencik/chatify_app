@@ -76,7 +76,9 @@ class _ChatPageState extends State<ChatPage> {
                       color: const Color.fromRGBO(0, 82, 218, 1.0),
                     ),
                     secondaryAction: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        chatPageProvider.goBack();
+                      },
                       icon: const Icon(Icons.arrow_back),
                       color: const Color.fromRGBO(0, 82, 218, 1.0),
                     ),
