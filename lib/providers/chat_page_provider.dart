@@ -10,6 +10,7 @@ import 'package:chatify_app/services/cloud_storage_service.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/media_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get_it/get_it.dart';
 
 class ChatPageProvider extends ChangeNotifier {
@@ -23,6 +24,18 @@ class ChatPageProvider extends ChangeNotifier {
   String chatID;
   List<ChatMessage>? messages;
   String? message;
+
+  late StreamSubscription messageStream;
+  late StreamSubscription keyboardVisibilityStream;
+  late KeyboardVisibilityController keyboardVisibilityController;
+  String get mess {
+    return mess;
+  }
+
+  set mess(String value) {
+    message = value;
+  }
+
   ChatPageProvider(
     this.auth,
     this.messagesListViewController,
@@ -32,15 +45,8 @@ class ChatPageProvider extends ChangeNotifier {
     cloudStorageService = GetIt.instance.get<CloudStorageService>();
     mediaService = GetIt.instance.get<MediaService>();
     navigationService = GetIt.instance.get<NavigationService>();
+    keyboardVisibilityController = KeyboardVisibilityController();
     listenToMessages();
-  }
-  late StreamSubscription messageStream;
-  String get mess {
-    return mess;
-  }
-
-  set mess(String value) {
-    message = value;
   }
 
   @override
