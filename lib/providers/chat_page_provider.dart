@@ -47,12 +47,20 @@ class ChatPageProvider extends ChangeNotifier {
     navigationService = GetIt.instance.get<NavigationService>();
     keyboardVisibilityController = KeyboardVisibilityController();
     listenToMessages();
+    listenToKeyboardChanges();
   }
 
   @override
   void dispose() {
     super.dispose();
     messageStream.cancel();
+  }
+
+  void listenToKeyboardChanges() {
+    keyboardVisibilityStream =
+        keyboardVisibilityController.onChange.listen((event) {
+      databaseService.updaateChatData(chatID, {'is_activity': event});
+    });
   }
 
   void listenToMessages() {
