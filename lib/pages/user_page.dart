@@ -37,7 +37,17 @@ class _UserPageState extends State<UserPage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [TopBar(barTitle: 'Users')],
+        children: [
+          TopBar(
+            barTitle: 'Users',
+            primaryAction: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.logout,
+                  color: Color.fromRGBO(0, 82, 218, 1),
+                )),
+          )
+        ],
       ),
     );
   }
