@@ -1,4 +1,5 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +33,12 @@ class _UserPageState extends State<UserPage> {
       ),
       height: deviceHeight * 0.98,
       width: deviceWidth * 0.97,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [TopBar(barTitle: 'Users')],
+      ),
     );
   }
 }
