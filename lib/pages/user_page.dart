@@ -25,8 +25,13 @@ class _UserPageState extends State<UserPage> {
   }
 
   Widget buildUI() {
-    return const Scaffold(
-      backgroundColor: Colors.green,
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: deviceWidth * 0.03,
+        horizontal: deviceHeight * 0.02,
+      ),
+      height: deviceHeight * 0.98,
+      width: deviceWidth * 0.97,
     );
   }
 }
