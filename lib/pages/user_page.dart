@@ -1,4 +1,6 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/providers/chat_page_provider.dart';
+import 'package:chatify_app/providers/users_page_provider.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
@@ -17,6 +19,7 @@ class _UserPageState extends State<UserPage> {
   late double deviceWidth;
 
   late AuthenticationProvieder authenticationProvieder;
+  late UsersPageProvider usersPageProvider;
   final TextEditingController searchFieldEditingcontroller =
       TextEditingController();
   @override
@@ -24,7 +27,13 @@ class _UserPageState extends State<UserPage> {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     authenticationProvieder = Provider.of<AuthenticationProvieder>(context);
-    return buildUI();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UsersPageProvider>(
+            create: (context) => UsersPageProvider(authenticationProvieder))
+      ],
+      child: buildUI(),
+    );
   }
 
   Widget buildUI() {
