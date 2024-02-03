@@ -1,5 +1,6 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
+import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -62,11 +63,17 @@ class _UserPageState extends State<UserPage> {
   Widget usersList() {
     return Expanded(child: () {
       return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Text('User $index');
-        },
-      );
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return CustomListViewTile(
+                height: deviceHeight * 0.10,
+                title: 'User $index',
+                subtitle: 'Last Active',
+                image: 'https://i.pravatar.cc/300',
+                isActive: true,
+                isActivity: false,
+                onTap: () {});
+          });
     }());
   }
 }
