@@ -52,9 +52,21 @@ class _UserPageState extends State<UserPage> {
               onEditingComplete: (value) {},
               hintText: 'Search..',
               obscureText: false,
-              textEditingController: searchFieldEditingcontroller)
+              textEditingController: searchFieldEditingcontroller),
+          usersList(),
         ],
       ),
     );
+  }
+
+  Widget usersList() {
+    return Expanded(child: () {
+      return ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Text('User $index');
+        },
+      );
+    }());
   }
 }
