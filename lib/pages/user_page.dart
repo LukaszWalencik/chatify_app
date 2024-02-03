@@ -1,4 +1,5 @@
 import 'package:chatify_app/providers/authentication_provider.dart';
+import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +47,12 @@ class _UserPageState extends State<UserPage> {
                   Icons.logout,
                   color: Color.fromRGBO(0, 82, 218, 1),
                 )),
-          )
+          ),
+          CustomTextField(
+              onEditingComplete: (value) {},
+              hintText: 'Search..',
+              obscureText: false,
+              textEditingController: searchFieldEditingcontroller)
         ],
       ),
     );
