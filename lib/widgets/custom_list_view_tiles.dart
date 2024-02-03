@@ -83,7 +83,7 @@ class CustomChatListViewTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 10),
       width: width,
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -137,6 +137,36 @@ class CustomListViewTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile();
+    return ListTile(
+      trailing: isActivity
+          ? const Icon(
+              Icons.check,
+              color: Colors.white,
+            )
+          : null,
+      onTap: () => onTap(),
+      minVerticalPadding: height * 0.2,
+      leading: RoundedImageNetworkWithStatusIndicator(
+        isActive: isActive,
+        imagePath: image,
+        size: height / 2,
+      ),
+      title: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: const TextStyle(
+          color: Colors.white54,
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
   }
 }
