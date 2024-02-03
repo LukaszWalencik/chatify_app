@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -33,5 +34,26 @@ class CustomTextFormField extends StatelessWidget {
             color: Colors.white54,
           )),
     );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  final Function(String) onEditingComplete;
+  final String hintText;
+  final bool obscureText;
+  final TextEditingController textEditingController;
+  IconData? iconData;
+  CustomTextField({
+    Key? key,
+    required this.onEditingComplete,
+    required this.hintText,
+    required this.obscureText,
+    required this.textEditingController,
+    this.iconData,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const TextField();
   }
 }
