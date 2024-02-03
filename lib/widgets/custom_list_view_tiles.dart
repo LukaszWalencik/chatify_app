@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:chatify_app/widgets/message_bubbles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:chatify_app/models/chat_message.dart';
 import 'package:chatify_app/models/chat_user.dart';
+import 'package:chatify_app/widgets/message_bubbles.dart';
 import 'package:chatify_app/widgets/rounded_image.dart';
 
 class CustomListViewTileWithActivity extends StatelessWidget {
@@ -113,5 +113,30 @@ class CustomChatListViewTile extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class CustomListViewTile extends StatelessWidget {
+  final double height;
+  final String title;
+  final String subtitle;
+  final String image;
+  final bool isActive;
+  final bool isActivity;
+  final Function onTap;
+  const CustomListViewTile({
+    Key? key,
+    required this.height,
+    required this.title,
+    required this.subtitle,
+    required this.image,
+    required this.isActive,
+    required this.isActivity,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile();
   }
 }
