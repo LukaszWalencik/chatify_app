@@ -38,6 +38,7 @@ class _UserPageState extends State<UserPage> {
 
   Widget buildUI() {
     return Builder(builder: (context) {
+      usersPageProvider = context.watch<UsersPageProvider>();
       return Container(
         padding: EdgeInsets.symmetric(
           vertical: deviceWidth * 0.03,
