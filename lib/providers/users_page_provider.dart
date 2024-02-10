@@ -26,4 +26,24 @@ class UsersPageProvider extends ChangeNotifier {
   void dispose() {
     super.dispose();
   }
+
+  void getUsers({String? name}) async {
+    selectedUser = [];
+    try {
+      databaseService.getUsers(name: name).then(
+        (snapshot) {
+          chatUsers = snapshot.docs.map(
+            (doc) {
+              Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+              data['uid'] = doc.id;
+              return ChatUser.fromJSON(data);
+            },
+          ).toList();
+        },
+      );
+    } catch (e) {
+      print('Error getting users');
+      print(e);
+    }
+  }
 }
