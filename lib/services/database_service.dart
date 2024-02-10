@@ -14,6 +14,16 @@ class DatabaseService {
     return db.collection(USER_COLLECTION).doc(uid).get();
   }
 
+  Future<QuerySnapshot> getUsers({String? name}) {
+    Query query = db.collection(USER_COLLECTION);
+    if (name != null) {
+      query = query
+          .where('name', isGreaterThanOrEqualTo: name)
+          .where('name', isLessThanOrEqualTo: name + 'z');
+    }
+    return query.get();
+  }
+
   Future<void> updateUserLastSeenTime(String uid) async {
     try {
       await db.collection(USER_COLLECTION).doc(uid).update({
