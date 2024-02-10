@@ -21,6 +21,7 @@ class UsersPageProvider extends ChangeNotifier {
     selectedUser = [];
     databaseService = GetIt.instance.get<DatabaseService>();
     navigationService = GetIt.instance.get<NavigationService>();
+    getUsers();
   }
   @override
   void dispose() {
