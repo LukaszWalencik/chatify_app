@@ -68,6 +68,16 @@ class UsersPageProvider extends ChangeNotifier {
         {'is_group': isGroup, 'is_acivity': false, 'members': membersID},
       );
       //Navigate to Chat Page
+      List<ChatUser> members = [];
+      for (var uid in membersID) {
+        DocumentSnapshot userSnapshot = await databaseService.getUser(uid);
+        Map<String, dynamic> userData =
+            userSnapshot.data() as Map<String, dynamic>;
+        userData['uid'] = userSnapshot.id;
+        members.add(
+          ChatUser.fromJSON(userData),
+        );
+      }
     } catch (e) {
       print('Error creating chat');
       print(e);
