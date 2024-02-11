@@ -1,4 +1,6 @@
+import 'package:chatify_app/models/chat.dart';
 import 'package:chatify_app/models/chat_user.dart';
+import 'package:chatify_app/pages/chat_page.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
@@ -77,6 +79,17 @@ class UsersPageProvider extends ChangeNotifier {
         members.add(
           ChatUser.fromJSON(userData),
         );
+        ChatPage chatPage = ChatPage(
+          chat: Chat(
+            uid: doc!.id,
+            currentUserUid: authenticationProvieder.chatUser.uid,
+            activity: false,
+            group: isGroup,
+            members: members,
+            messages: [],
+          ),
+        );
+        navigationService.navigatorToPage(chatPage);
       }
     } catch (e) {
       print('Error creating chat');
