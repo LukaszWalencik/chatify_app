@@ -2,6 +2,7 @@ import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/navigation_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -55,5 +56,21 @@ class UsersPageProvider extends ChangeNotifier {
       selectedUser.add(user);
     }
     notifyListeners();
+  }
+
+  void createChat() async {
+    try {
+      //Create chat
+      List<String> membersID = selectedUsers.map((user) => user.uid).toList();
+      membersID.add(authenticationProvieder.chatUser.uid);
+      bool isGroup = selectedUsers.length > 1;
+      DocumentReference? doc = await databaseService.createChat(
+        {'is_group': isGroup, 'is_acivity': false, 'members': membersID},
+      );
+      //Navigate to Chat Page
+    } catch (e) {
+      print('Error creating chat');
+      print(e);
+    }
   }
 }
