@@ -67,6 +67,7 @@ class _UserPageState extends State<UserPage> {
                 obscureText: false,
                 textEditingController: searchFieldEditingcontroller),
             usersList(),
+            createChatButton(),
           ],
         ),
       );
