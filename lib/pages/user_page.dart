@@ -1,6 +1,7 @@
 import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
 import 'package:chatify_app/providers/users_page_provider.dart';
+import 'package:chatify_app/widgets/custom_button.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
 import 'package:chatify_app/widgets/top_bar.dart';
@@ -108,5 +109,17 @@ class _UserPageState extends State<UserPage> {
         );
       }
     }());
+  }
+
+  Widget createChatButton() {
+    return CustomButton(
+        name: usersPageProvider.selectedUsers == 1
+            ? 'Chat With ${usersPageProvider.selectedUsers.first.name}'
+            : ' Create Group Chat',
+        height: deviceHeight * 0.08,
+        width: 0.80,
+        onPressed: () {
+          usersPageProvider.createChat();
+        });
   }
 }
