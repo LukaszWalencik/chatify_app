@@ -55,7 +55,7 @@ class _UserPageState extends State<UserPage> {
               barTitle: 'Users',
               primaryAction: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.logout,
                     color: Color.fromRGBO(0, 82, 218, 1),
                   )),
@@ -86,11 +86,14 @@ class _UserPageState extends State<UserPage> {
                     subtitle: 'Last Active ${users[index].lastActive}',
                     image: users[index].imageURL,
                     isActive: users[index].wasRecentlyActive(),
-                    isActivity: false,
-                    onTap: () {});
+                    isActivity:
+                        usersPageProvider.selectedUser.contains(users[index]),
+                    onTap: () {
+                      usersPageProvider.updateSelectedUsers(users[index]);
+                    });
               });
         } else {
-          return Center(
+          return const Center(
             child: Text(
               'No users found',
               style: TextStyle(color: Colors.white),
@@ -98,7 +101,7 @@ class _UserPageState extends State<UserPage> {
           );
         }
       } else {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(
             color: Colors.white,
           ),
