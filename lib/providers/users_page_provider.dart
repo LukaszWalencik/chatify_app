@@ -54,5 +54,6 @@ class UsersPageProvider extends ChangeNotifier {
     } else {
       selectedUser.add(user);
     }
+    notifyListeners();
   }
 }
