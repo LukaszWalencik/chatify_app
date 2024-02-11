@@ -1,6 +1,5 @@
 import 'package:chatify_app/models/chat_user.dart';
 import 'package:chatify_app/providers/authentication_provider.dart';
-import 'package:chatify_app/providers/chat_page_provider.dart';
 import 'package:chatify_app/providers/users_page_provider.dart';
 import 'package:chatify_app/widgets/custom_input_field.dart';
 import 'package:chatify_app/widgets/custom_list_view_tiles.dart';
@@ -79,14 +78,14 @@ class _UserPageState extends State<UserPage> {
       if (users != null) {
         if (users.length != 0) {
           return ListView.builder(
-              itemCount: 10,
+              itemCount: users.length,
               itemBuilder: (context, index) {
                 return CustomListViewTile(
                     height: deviceHeight * 0.10,
-                    title: 'User $index',
-                    subtitle: 'Last Active',
-                    image: 'https://i.pravatar.cc/300',
-                    isActive: true,
+                    title: users[index].name,
+                    subtitle: 'Last Active ${users[index].lastActive}',
+                    image: users[index].imageURL,
+                    isActive: users[index].wasRecentlyActive(),
                     isActivity: false,
                     onTap: () {});
               });
