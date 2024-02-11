@@ -113,14 +113,17 @@ class _UserPageState extends State<UserPage> {
   }
 
   Widget createChatButton() {
-    return CustomButton(
-        name: usersPageProvider.selectedUsers == 1
-            ? 'Chat With ${usersPageProvider.selectedUsers.first.name}'
-            : ' Create Group Chat',
-        height: deviceHeight * 0.08,
-        width: 0.80,
-        onPressed: () {
-          usersPageProvider.createChat();
-        });
+    return Visibility(
+      visible: usersPageProvider.selectedUsers.isNotEmpty,
+      child: CustomButton(
+          name: usersPageProvider.selectedUsers == 1
+              ? 'Chat With ${usersPageProvider.selectedUsers.first.name}'
+              : ' Create Group Chat',
+          height: deviceHeight * 0.08,
+          width: 0.80,
+          onPressed: () {
+            usersPageProvider.createChat();
+          }),
+    );
   }
 }
