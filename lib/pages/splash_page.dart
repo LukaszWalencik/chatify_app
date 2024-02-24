@@ -1,3 +1,4 @@
+import 'package:chatify_app/firebase_options.dart';
 import 'package:chatify_app/services/cloud_storage_service.dart';
 import 'package:chatify_app/services/database_service.dart';
 import 'package:chatify_app/services/media_service.dart';
@@ -48,7 +49,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> setup() async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
     WidgetsFlutterBinding.ensureInitialized();
     _registerServices();
   }
