@@ -55,7 +55,9 @@ class _UserPageState extends State<UserPage> {
             TopBar(
               barTitle: 'Users',
               primaryAction: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    authenticationProvieder.logout();
+                  },
                   icon: const Icon(
                     Icons.logout,
                     color: Color.fromRGBO(0, 82, 218, 1),
