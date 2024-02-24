@@ -89,6 +89,8 @@ class UsersPageProvider extends ChangeNotifier {
             messages: [],
           ),
         );
+        selectedUser = [];
+        notifyListeners();
         navigationService.navigatorToPage(chatPage);
       }
     } catch (e) {
